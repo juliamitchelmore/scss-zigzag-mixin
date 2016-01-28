@@ -1,0 +1,21 @@
+@mixin zigzag($color, $size: 50)
+{
+  $zag-start: 15%;
+  $zag-stop: 35%;
+  $zag-cap: 11%;
+
+  $zag-cap-x: floor(-($size / 6)) + px;
+  $zag-cap-y: floor(($size / 3.65)) + px;
+
+  $zag-x: ($size / 3) + px;
+  $zag-y: ($size / 4) + ($size / 100) + px;
+
+  $bg: transparent;
+
+  background:
+    linear-gradient(45deg, $color $zag-cap, $bg $zag-cap) $zag-cap-x $zag-cap-y,
+    linear-gradient(-45deg, $color $zag-cap, $bg $zag-cap) $zag-cap-x $zag-cap-y,
+    linear-gradient(-135deg, $bg $zag-start, $color $zag-start, $color $zag-stop, $bg $zag-stop) $zag-x $zag-y,
+    linear-gradient(135deg, $bg $zag-start, $color $zag-start, $color $zag-stop, $bg $zag-stop) $zag-x $zag-y;
+  background-size: ($size + px) ($size + px);
+}
